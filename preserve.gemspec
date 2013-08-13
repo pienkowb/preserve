@@ -7,8 +7,8 @@ require "preserve/version"
 Gem::Specification.new do |s|
   s.name        = "preserve"
   s.version     = Preserve::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.authors     = ["Bartosz Pieńkowski"]
+  s.email       = ["pienkowb@gmail.com"]
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of Preserve."
   s.description = "TODO: Description of Preserve."
