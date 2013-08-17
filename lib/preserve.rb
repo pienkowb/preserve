@@ -15,7 +15,8 @@ module Preserve
 
   module ClassMethods
     def preserve(*parameters)
-      parameters.each { |p| before_filter &Preserve::filter(p) }
+      options = parameters.last.is_a?(Hash) ? parameters.pop : {}
+      parameters.each { |p| before_filter options, &Preserve::filter(p) }
     end
   end
 end

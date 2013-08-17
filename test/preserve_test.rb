@@ -21,4 +21,9 @@ class PreserveTest < ActionController::TestCase
     assert_equal 20, session[:preserve_per_page].to_i
     assert_equal 'created_at', session[:preserve_order]
   end
+
+  test "filtering options should be passed" do
+    get :show, id: 1, per_page: 20
+    assert_blank session[:preserve_per_page]
+  end
 end
