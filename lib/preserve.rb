@@ -14,8 +14,8 @@ module Preserve
   end
 
   module ClassMethods
-    def preserve(name, options = {})
-      before_filter &Preserve::filter(name)
+    def preserve(*parameters)
+      parameters.each { |p| before_filter &Preserve::filter(p) }
     end
   end
 end
