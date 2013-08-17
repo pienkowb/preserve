@@ -1,5 +1,6 @@
 class PreserveController < ApplicationController
   preserve :per_page, :order, only: :index
+  preserve :status, prefix: 'test'
 
   def index
     render nothing: true

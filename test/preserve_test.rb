@@ -26,4 +26,9 @@ class PreserveTest < ActionController::TestCase
     get :show, id: 1, per_page: 20
     assert_blank session[:preserve_per_page]
   end
+
+  test "a session key prefix should be supported" do
+    get :index, status: 'active'
+    assert_equal 'active', session[:test_preserve_status]
+  end
 end

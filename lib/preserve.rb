@@ -1,14 +1,14 @@
 module Preserve
   extend ActiveSupport::Concern
 
-  def self.filter(name)
+  def self.filter(name, prefix = nil)
     lambda do
-      id = "#{controller_name}_#{name}".to_sym
+      id = [prefix, controller_name, name].compact.join '_'
 
       if params[name].blank?
-        params[name] = session[id]
+        params[name] = session[id.to_sym]
       else
-        session[id] = params[name]
+        session[id.to_sym] = params[name]
       end
     end
   end
@@ -16,7 +16,11 @@ module Preserve
   module ClassMethods
     def preserve(*parameters)
       options = parameters.last.is_a?(Hash) ? parameters.pop : {}
-      parameters.each { |p| before_filter options, &Preserve::filter(p) }
+      prefix = options.delete :prefix
+
+      parameters.each do |name|
+        before_filter options, &Preserve::filter(name, prefix)
+      end
     end
   end
 end
