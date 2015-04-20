@@ -6,7 +6,8 @@ module Preserve
       id = [prefix, controller_name, name].compact.join '_'
 
       if params[name].blank?
-        params[name] = session[id.to_sym]
+        value = session[id.to_sym]
+        params[name] = value if value.present?
       else
         session[id.to_sym] = params[name]
       end
