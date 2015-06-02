@@ -108,3 +108,29 @@ If more than one parameter needs to be preserved within the same controller, its
 ```ruby
 preserve :per_page, :page
 ```
+
+### Restrictions
+
+Limiting functionality provided by the gem to a certain set of controller actions can be achieved by applying the `:only` (or `:except`) option.
+
+```ruby
+preserve :per_page, only: :index
+```
+
+It behaves exactly like the `:only` option of an [Action Controller filter](http://guides.rubyonrails.org/action_controller_overview.html#filters).
+In fact, the gem sets such filter underneath, so you can make use of all its options – they will be passed to that filter.
+
+### Setting a session key prefix
+
+By default, parameter values are stored in a session with a key that consists of a controller name and a parameter name (e.g. `users_per_page` for the `per_page` parameter in the `UsersController`).
+
+In most cases such combination results in a unique session key, but there might be a situation when it's necessary to add a prefix in order to avoid conflicts with a session key that is already in use.
+It can be done by passing the `:prefix` option.
+
+```ruby
+class UsersController < ApplicationController
+  preserve :per_page, prefix: 'preserved'
+end
+```
+
+From now on, the parameter will be stored in a session with the `preserved_users_per_page` key.
