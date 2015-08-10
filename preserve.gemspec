@@ -12,10 +12,12 @@ Gem::Specification.new do |s|
   s.description = 'Preserve is a Rails plugin which stores selected parameters in a session to make them available in subsequent requests.'
 
   s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
-  s.test_files = Dir['test/**/*']
+  s.test_files = Dir['spec/**/*']
 
   s.required_ruby_version = '>= 1.9.3'
 
   s.add_dependency 'rails', '>= 3.0'
+
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'rspec-rails'
 end

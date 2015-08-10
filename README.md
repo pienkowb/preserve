@@ -43,7 +43,7 @@ end
 Routes are declared as following:
 
 ```ruby
-Demo::Application.routes.draw do
+Dummy::Application.routes.draw do
   resources :parameters, only: :index
 end
 ```
@@ -122,15 +122,15 @@ In fact, the gem sets such filter underneath, so you can make use of all its opt
 
 ### Setting a session key prefix
 
-By default, parameter values are stored in a session with a key that consists of a controller name and a parameter name (e.g. `users_per_page` for the `per_page` parameter in the `UsersController`).
+By default, parameter values are stored in a session with a key that consists of a controller name and a parameter name (e.g. `users_order` for the `order` parameter in the `UsersController`).
 
 In most cases such combination results in a unique session key, but there might be a situation when it's necessary to add a prefix in order to avoid conflicts with a session key that is already in use.
 It can be done by passing the `:prefix` option.
 
 ```ruby
 class UsersController < ApplicationController
-  preserve :per_page, prefix: 'preserved'
+  preserve :order, prefix: 'preserved'
 end
 ```
 
-From now on, the parameter will be stored in a session with the `preserved_users_per_page` key.
+From now on, the parameter will be stored in a session with the `preserved_users_order` key.
