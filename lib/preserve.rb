@@ -1,15 +1,13 @@
 module Preserve
   extend ActiveSupport::Concern
 
-  def self.filter(name, prefix = nil)
+  def self.filter(name, key)
     lambda do
-      id = [prefix, controller_name, name].compact.join '_'
-
       if params[name].blank?
-        value = session[id.to_sym]
+        value = session[key.to_sym]
         params[name] = value if value.present?
       else
-        session[id.to_sym] = params[name]
+        session[key.to_sym] = params[name]
       end
     end
   end
@@ -20,7 +18,8 @@ module Preserve
       prefix = options.delete :prefix
 
       parameters.each do |name|
-        before_filter options, &Preserve::filter(name, prefix)
+        key = [prefix, controller_name, name].compact.join '_'
+        before_filter options, &Preserve::filter(name, key)
       end
     end
   end

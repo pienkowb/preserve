@@ -101,7 +101,7 @@ $ curl -b cookies http://localhost:3000/parameters
 
 This time, the `per_page` parameter is still available when the second request is made, even though it wasn't sent particularly in that request.
 
-### Multiple parameters
+### Multiple arguments
 
 If more than one parameter needs to be preserved within the same controller, its name can be passed as a succeeding argument to the `preserve` method.
 
@@ -120,9 +120,21 @@ preserve :per_page, only: :index
 It behaves exactly like the `:only` option of an [Action Controller filter](http://guides.rubyonrails.org/action_controller_overview.html#filters).
 In fact, the gem sets such filter underneath, so you can make use of all its options – they will be passed to that filter.
 
+### Application-wide parameters
+
+When there's a need to store a parameter used across the whole application, the `preserve` method should be called inside the `ApplicationController`.
+
+```ruby
+class ApplicationController < ActionController::Base
+  preserve :locale
+end
+```
+
+In more complex scenarios, controller inheritance can be utilized to further adjust the scope.
+
 ### Setting a session key prefix
 
-By default, parameter values are stored in a session with a key that consists of a controller name and a parameter name (e.g. `users_order` for the `order` parameter in the `UsersController`).
+By default, parameter values are stored in a session with a key that consists of a controller name and parameter name (e.g. `users_order` for the `order` parameter in the `UsersController`).
 
 In most cases such combination results in a unique session key, but there might be a situation when it's necessary to add a prefix in order to avoid conflicts with a session key that is already in use.
 It can be done by passing the `:prefix` option.
