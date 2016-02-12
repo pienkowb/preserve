@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Persist parameter values between requests'
   s.description = 'Preserve is a Rails plugin which stores selected parameters in a session to make them available in subsequent requests.'
 
-  s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir['lib/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['spec/**/*']
 
   s.required_ruby_version = '>= 1.9.3'

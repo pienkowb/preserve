@@ -43,7 +43,7 @@ end
 Routes are declared as following:
 
 ```ruby
-Dummy::Application.routes.draw do
+Rails.application.routes.draw do
   resources :parameters, only: :index
 end
 ```
