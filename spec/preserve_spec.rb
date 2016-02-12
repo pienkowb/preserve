@@ -5,22 +5,22 @@ RSpec.describe Preserve, type: :request do
     get parameters_path, per_page: 20
     get parameters_path
 
-    expect(json[:per_page].to_i).to eq 20
+    expect(json[:per_page].to_i).to eq(20)
   end
 
   it 'updates a parameter value' do
     get parameters_path, per_page: 20
     get parameters_path, per_page: 10
 
-    expect(json[:per_page].to_i).to eq 10
+    expect(json[:per_page].to_i).to eq(10)
   end
 
   it 'handles multiple arguments' do
     get parameters_path, per_page: 20, page: 5
     get parameters_path
 
-    expect(json[:per_page].to_i).to eq 20
-    expect(json[:page].to_i).to eq 5
+    expect(json[:per_page].to_i).to eq(20)
+    expect(json[:page].to_i).to eq(5)
   end
 
   it 'handles restrictions' do
@@ -34,13 +34,13 @@ RSpec.describe Preserve, type: :request do
     get parameters_path, order: 'created_at'
 
     key = :preserved_parameters_order
-    expect(session[key]).to eq 'created_at'
+    expect(session[key]).to eq('created_at')
   end
 
   it 'supports controller inheritance' do
     get parameters_path, locale: 'en'
     get parameters_path
 
-    expect(json[:locale]).to eq 'en'
+    expect(json[:locale]).to eq('en')
   end
 end

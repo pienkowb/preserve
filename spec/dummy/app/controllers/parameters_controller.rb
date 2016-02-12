@@ -13,6 +13,6 @@ class ParametersController < ApplicationController
   private
 
   def request_parameters
-    params.except :controller, :action
+    params.except(:controller, :action)
   end
 end

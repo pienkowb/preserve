@@ -14,15 +14,15 @@ module Preserve
 
   def preserve(*parameters)
     options = parameters.extract_options!
-    prefix = options.delete :prefix
+    prefix = options.delete(:prefix)
 
     parameters.each do |name|
-      key = [prefix, controller_name, name].compact.join '_'
+      key = [prefix, controller_name, name].compact.join('_')
       before_filter options, &Preserve.filter(name, key)
     end
   end
 end
 
-ActiveSupport.on_load :action_controller do
+ActiveSupport.on_load(:action_controller) do
   extend Preserve
 end
