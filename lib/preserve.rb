@@ -18,11 +18,11 @@ module Preserve
 
     parameters.each do |name|
       key = [prefix, controller_name, name].compact.join('_')
-      _preserve_filter(options, &Preserve.filter(name, key))
+      _set_preserve_filter(options, &Preserve.filter(name, key))
     end
   end
 
-  def _preserve_filter(*args, &block)
+  def _set_preserve_filter(*args, &block)
     if respond_to?(:before_action)
       before_action(*args, &block)
     else
