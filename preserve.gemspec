@@ -2,24 +2,24 @@ $:.push File.expand_path('../lib', __FILE__)
 
 require 'preserve/version'
 
-Gem::Specification.new do |s|
-  s.name        = 'preserve'
-  s.version     = Preserve::VERSION
-  s.author      = 'Bartosz Pieńkowski'
-  s.email       = 'pienkowb@gmail.com'
-  s.homepage    = 'https://github.com/pienkowb/preserve'
-  s.summary     = 'Persist parameter values between requests'
-  s.description = 'Preserve is a Rails plugin which stores selected parameters in a session to make them available in subsequent requests.'
-  s.license     = 'MIT'
+Gem::Specification.new do |spec|
+  spec.name = 'preserve'
+  spec.version = Preserve::VERSION
+  spec.author = 'Bartosz Pieńkowski'
+  spec.email = 'pienkowb@gmail.com'
+  spec.homepage = 'https://github.com/pienkowb/preserve'
+  spec.summary = 'Persist parameter values between requests'
+  spec.description = 'Preserve is a Rails plugin which stores selected parameters in a session to make them available in subsequent requests.'
+  spec.license = 'MIT'
 
-  s.files = Dir['lib/**/*'] + %w(MIT-LICENSE Rakefile README.md)
-  s.test_files = Dir['spec/**/*']
+  spec.files = Dir['lib/**/*'] + %w(MIT-LICENSE Rakefile README.md)
+  spec.test_files = Dir['spec/**/*']
 
-  s.required_ruby_version = '>= 1.9.3'
+  spec.required_ruby_version = '>= 1.9.3'
 
-  s.add_dependency 'rails', '>= 3.0'
+  spec.add_dependency 'rails', '>= 3.0'
 
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'appraisal'
+  spec.add_development_dependency 'sqlite3', '~> 1.3.13'
+  spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'appraisal'
 end
