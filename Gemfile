@@ -14,3 +14,4 @@ gemspec
 # gem 'debugger'
 
 gem 'rails', '~> 4.2.11'
+gem 'sprockets', '~> 3.7'
