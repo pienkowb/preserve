@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    preserve (0.1.2)
+    preserve (1.0.0)
       rails (>= 3.0)
 
 GEM
