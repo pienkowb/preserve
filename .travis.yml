@@ -1,7 +1,6 @@
 language: ruby
 
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1.10
   - 2.2.10
@@ -17,10 +16,6 @@ gemfile:
 
 matrix:
   exclude:
-    - rvm: 1.9.3
-      gemfile: gemfiles/nokogiri_1.8.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/nokogiri_1.10.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/nokogiri_1.8.gemfile
     - rvm: 2.0.0

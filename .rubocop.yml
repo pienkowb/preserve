@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 1.9
+  TargetRubyVersion: 2.0
   DisplayCopNames: true
   Exclude:
     - spec/dummy/bin/*
@@ -16,6 +16,10 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Exclude:
     - lib/preserve.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
 
 Metrics/LineLength:
   Exclude:
