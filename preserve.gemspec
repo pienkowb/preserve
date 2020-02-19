@@ -21,5 +21,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'appraisal', '~> 2.2'
   spec.add_development_dependency 'rspec-rails', '~> 3.9'
+  spec.add_development_dependency 'rubocop', '~> 0.41.2'
   spec.add_development_dependency 'sqlite3', '~> 1.3.13'
 end

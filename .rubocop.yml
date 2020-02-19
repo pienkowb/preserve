@@ -1,0 +1,22 @@
+AllCops:
+  TargetRubyVersion: 1.9
+  DisplayCopNames: true
+  Exclude:
+    - spec/dummy/bin/*
+    - spec/dummy/config/**/*
+    - spec/dummy/Rakefile
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - lib/preserve.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/preserve.rb
+
+Metrics/LineLength:
+  Exclude:
+    - preserve.gemspec
