@@ -2,32 +2,39 @@ require 'spec_helper'
 
 RSpec.describe Preserve, type: :request do
   it 'persists a parameter value' do
-    get parameters_path, per_page: 20
+    get parameters_path, per_page: '20'
     get parameters_path
 
-    expect(json[:per_page].to_i).to eq(20)
+    expect(json_response[:per_page]).to eq('20')
   end
 
   it 'updates a parameter value' do
-    get parameters_path, per_page: 20
-    get parameters_path, per_page: 10
+    get parameters_path, per_page: '20'
+    get parameters_path, per_page: '10'
 
-    expect(json[:per_page].to_i).to eq(10)
+    expect(json_response[:per_page]).to eq('10')
   end
 
-  it 'handles multiple arguments' do
-    get parameters_path, per_page: 20, page: 5
+  it 'handles multiple parameters' do
+    get parameters_path, page: '5', per_page: '20'
     get parameters_path
 
-    expect(json[:per_page].to_i).to eq(20)
-    expect(json[:page].to_i).to eq(5)
+    expect(json_response[:page]).to eq('5')
+    expect(json_response[:per_page]).to eq('20')
   end
 
-  it 'handles restrictions' do
-    post parameters_path, per_page: 20
+  it 'handles action restrictions' do
+    post parameters_path, per_page: '20'
     post parameters_path
 
-    expect(json[:per_page]).to be_nil
+    expect(json_response[:per_page]).to be_nil
+  end
+
+  it 'handles a blank parameter value' do
+    get parameters_path, status: 'active'
+    get parameters_path, status: ''
+
+    expect(json_response[:status]).to eq('')
   end
 
   it 'handles a session key prefix' do
@@ -41,6 +48,6 @@ RSpec.describe Preserve, type: :request do
     get parameters_path, locale: 'en'
     get parameters_path
 
-    expect(json[:locale]).to eq('en')
+    expect(json_response[:locale]).to eq('en')
   end
 end

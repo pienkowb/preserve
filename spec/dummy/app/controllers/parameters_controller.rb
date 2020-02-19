@@ -1,5 +1,6 @@
 class ParametersController < ApplicationController
-  preserve :per_page, :page, only: :index
+  preserve :page, :per_page, only: :index
+  preserve :status, allow_blank: true
   preserve :order, prefix: 'preserved'
 
   def index

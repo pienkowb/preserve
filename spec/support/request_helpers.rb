@@ -1,5 +1,7 @@
 module RequestHelpers
-  def json
-    @json ||= JSON.parse(response.body).with_indifferent_access
+  def json_response
+    @json_response ||= begin
+      JSON.parse(response.body).with_indifferent_access
+    end
   end
 end
