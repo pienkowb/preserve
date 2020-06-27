@@ -7,5 +7,5 @@ appraise 'nokogiri-1.8' do
 end
 
 appraise 'nokogiri-1.10' do
-  gem 'nokogiri', '~> 1.10.4'
+  gem 'nokogiri', '~> 1.10.8'
 end
