@@ -1,4 +1,4 @@
-# Preserve [![Gem version](https://img.shields.io/gem/v/preserve.svg)](https://rubygems.org/gems/preserve) [![Build status](https://img.shields.io/travis/pienkowb/preserve.svg)](https://travis-ci.org/pienkowb/preserve)
+# Preserve [![Gem version](https://img.shields.io/gem/v/preserve.svg)](https://rubygems.org/gems/preserve) [![Build status](https://img.shields.io/travis/pienkowb/preserve/master.svg)](https://travis-ci.org/pienkowb/preserve)
 
 Preserve is a Rails plugin which stores selected parameters in the session to make them available in subsequent requests.
 
