@@ -1,11 +1,15 @@
-appraise 'nokogiri-1.6' do
-  gem 'nokogiri', '~> 1.6.8'
+appraise 'rails-3' do
+  gem 'rails', '~> 3.2'
 end
 
-appraise 'nokogiri-1.8' do
-  gem 'nokogiri', '~> 1.8.5'
+appraise 'rails-4' do
+  gem 'rails', '~> 4.2'
 end
 
-appraise 'nokogiri-1.10' do
-  gem 'nokogiri', '~> 1.10.8'
+appraise 'rails-5' do
+  gem 'rails', '~> 5.2'
+end
+
+appraise 'rails-6' do
+  gem 'rails', '~> 6.0'
 end

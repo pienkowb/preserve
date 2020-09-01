@@ -5,25 +5,16 @@ rvm:
   - 2.1.10
   - 2.2.10
   - 2.3.8
-  - 2.4.9
-  - 2.5.7
-  - 2.6.5
+  - 2.4.10
+  - 2.5.8
+  - 2.6.6
+  - 2.7.1
 
 gemfile:
-  - gemfiles/nokogiri_1.6.gemfile
-  - gemfiles/nokogiri_1.8.gemfile
-  - gemfiles/nokogiri_1.10.gemfile
-
-matrix:
-  exclude:
-    - rvm: 2.0.0
-      gemfile: gemfiles/nokogiri_1.8.gemfile
-    - rvm: 2.0.0
-      gemfile: gemfiles/nokogiri_1.10.gemfile
-    - rvm: 2.1.10
-      gemfile: gemfiles/nokogiri_1.10.gemfile
-    - rvm: 2.2.10
-      gemfile: gemfiles/nokogiri_1.10.gemfile
+  - gemfiles/rails_3.gemfile
+  - gemfiles/rails_4.gemfile
+  - gemfiles/rails_5.gemfile
+  - gemfiles/rails_6.gemfile
 
 script:
   - bundle exec rspec

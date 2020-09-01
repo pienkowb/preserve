@@ -2,9 +2,7 @@ AllCops:
   TargetRubyVersion: 2.0
   DisplayCopNames: true
   Exclude:
-    - spec/dummy/bin/*
-    - spec/dummy/config/**/*
-    - spec/dummy/Rakefile
+    - spec/dummy/**/*
 
 Style/Documentation:
   Enabled: false
