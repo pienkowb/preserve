@@ -1,2 +1,1 @@
-class ApplicationController < ActionController::Base
-end
+../../../common/app/controllers/application_controller.rb
