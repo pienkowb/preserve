@@ -33,6 +33,12 @@ matrix:
     - rvm: 2.4.10
       gemfile: gemfiles/rails_6.gemfile
 
+before_install:
+  - gem install bundler -v 1.17.3
+
+install:
+  - bundle _1.17.3_ install --jobs=3 --retry=3
+
 script:
-  - bundle exec rspec
-  - bundle exec rubocop
+  - bundle _1.17.3_ exec rspec
+  - bundle _1.17.3_ exec rubocop

@@ -175,7 +175,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal (~> 2.2)
-  bundler (~> 1.17)
+  bundler (~> 1.16)
   preserve!
   rails (~> 6.0)
   rspec-rails (~> 3.9)
