@@ -11,7 +11,7 @@ appraise 'rails-4' do
 end
 
 appraise 'rails-5' do
-  gem 'rails', '~> 5.2'
+  gem 'rails', git: 'https://github.com/rails/rails', branch: '5-2-stable'
   gem 'sqlite3', '~> 1.3', '>= 1.3.6'
 end
 
