@@ -32,6 +32,10 @@ matrix:
       gemfile: gemfiles/rails_6.gemfile
     - rvm: 2.4.10
       gemfile: gemfiles/rails_6.gemfile
+    - rvm: 2.7.1
+      gemfile: gemfiles/rails_3.gemfile
+    - rvm: 2.7.1
+      gemfile: gemfiles/rails_4.gemfile
 
 before_install:
   - gem install bundler -v 1.17.3
