@@ -1,7 +1,10 @@
 ENV['RAILS_ENV'] ||= 'test'
 
 require 'bundler/setup'
+require 'coveralls'
 require 'rails'
+
+Coveralls.wear!
 
 version = Rails::VERSION::MAJOR
 dummy_root = File.expand_path("dummy/rails-#{version}", __dir__)
