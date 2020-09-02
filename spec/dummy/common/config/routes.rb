@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :parameters, only: [:index, :create]
+  resources :parameters, only: %i[index create]
 end

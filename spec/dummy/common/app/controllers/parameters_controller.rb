@@ -4,16 +4,16 @@ class ParametersController < ApplicationController
   preserve :order, prefix: 'preserved'
 
   def index
-    render json: request_parameters
+    render json: parameters
   end
 
   def create
-    render json: request_parameters
+    render json: parameters
   end
 
   private
 
-  def request_parameters
+  def parameters
     params.except(:controller, :action)
   end
 end

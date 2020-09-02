@@ -29,12 +29,12 @@ For the sole purpose of this example, let's assume we have a Rails application w
 ```ruby
 class ParametersController < ApplicationController
   def index
-    render json: request_parameters
+    render json: parameters
   end
 
   private
 
-  def request_parameters
+  def parameters
     params.except(:controller, :action)
   end
 end
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 end
 ```
 
-Let's start the application and test its behaviour using [cURL](https://curl.haxx.se/).
+Let's start the application and test its behavior using [cURL](https://curl.haxx.se/).
 The whole concept is based on the session, so in order for this to work, the cookie engine must be enabled (hence the `-c` and `-b` options).
 
 In the first request, the `per_page` parameter is set to 20.
