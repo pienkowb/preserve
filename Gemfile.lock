@@ -174,7 +174,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  appraisal (~> 2.3)
+  appraisal (~> 2.2)
+  bundler (~> 1.17)
   preserve!
   rails (~> 6.0)
   rspec-rails (~> 3.9)

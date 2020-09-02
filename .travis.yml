@@ -16,6 +16,23 @@ gemfile:
   - gemfiles/rails_5.gemfile
   - gemfiles/rails_6.gemfile
 
+matrix:
+  exclude:
+    - rvm: 2.0.0
+      gemfile: gemfiles/rails_5.gemfile
+    - rvm: 2.0.0
+      gemfile: gemfiles/rails_6.gemfile
+    - rvm: 2.1.10
+      gemfile: gemfiles/rails_5.gemfile
+    - rvm: 2.1.10
+      gemfile: gemfiles/rails_6.gemfile
+    - rvm: 2.2.10
+      gemfile: gemfiles/rails_6.gemfile
+    - rvm: 2.3.8
+      gemfile: gemfiles/rails_6.gemfile
+    - rvm: 2.4.10
+      gemfile: gemfiles/rails_6.gemfile
+
 script:
   - bundle exec rspec
   - bundle exec rubocop
