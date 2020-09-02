@@ -13,4 +13,5 @@ Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.include RequestHelpers, type: :request
+  config.include LegacyHelpers if version < 5
 end
