@@ -16,5 +16,5 @@ Metrics/MethodLength:
     - lib/preserve.rb
 
 Metrics/BlockLength:
-  Exclude:
-    - spec/**/*_spec.rb
+  ExcludedMethods:
+    - describe
