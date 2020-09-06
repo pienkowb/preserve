@@ -138,7 +138,7 @@ Normally, when a parameter value is an empty string, it is overwritten by a valu
 To change this behavior, you can use the `allow_blank` option.
 
 ```ruby
-  preserve :status, allow_blank: true
+preserve :status, allow_blank: true
 ```
 
 As a result, the parameter value would be restored from the session only when the parameter was not sent in a request.

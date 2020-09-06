@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Preserve, type: :request do
-  before(:each) do
-    ParametersController.reset_callbacks(:process_action)
-  end
+  before(:each) { reset_callbacks(ParametersController) }
 
   it 'persists a parameter value' do
     ParametersController.preserve(:status)
@@ -56,6 +54,9 @@ RSpec.describe Preserve, type: :request do
     ParametersController.preserve(:status, prefix: 'preserved')
 
     get parameters_path, params: { status: 'active' }
+    get parameters_path
+
+    expect(json_response[:status]).to eq('active')
 
     expect(session[:preserved_parameters_status]).to eq('active')
   end
@@ -69,7 +70,7 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:locale]).to eq('en')
   end
 
-  context 'without a preserve filter' do
+  context 'without a preserve callback' do
     it "doesn't persist parameter values" do
       get parameters_path, params: { status: 'active' }
       get parameters_path
