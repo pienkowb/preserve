@@ -7,14 +7,6 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
-Metrics/AbcSize:
-  Exclude:
-    - lib/preserve.rb
-
-Metrics/MethodLength:
-  Exclude:
-    - lib/preserve.rb
-
 Metrics/BlockLength:
   ExcludedMethods:
     - describe

@@ -1,30 +1,19 @@
+require 'preserve/callback'
+
 module Preserve
   module Extension
     def preserve(*parameter_names)
       options = parameter_names.extract_options!
+      filter_options = options.slice(:only, :except)
 
-      allow_blank = options.delete(:allow_blank)
-      prefix = options.delete(:prefix)
+      parameter_names.each do |parameter_name|
+        callback = Callback.new(parameter_name, options)
 
-      parameter_names.each do |name|
-        key = [prefix, controller_name, name].compact.join('_')
-        predicate = allow_blank ? :nil? : :blank?
-
-        _set_preserve_callback(options) do
-          if params[name].send(predicate)
-            params[name] = session[key] if session.key?(key)
-          else
-            session[key] = params[name]
-          end
+        if respond_to?(:before_action)
+          before_action(callback, filter_options)
+        else
+          before_filter(callback, filter_options)
         end
-      end
-    end
-
-    def _set_preserve_callback(options, &block)
-      if respond_to?(:before_action)
-        before_action(options, &block)
-      else
-        before_filter(options, &block)
       end
     end
   end

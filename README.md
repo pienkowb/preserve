@@ -117,8 +117,7 @@ Limiting functionality provided by the gem to a certain set of controller action
 preserve :per_page, only: :index
 ```
 
-It behaves exactly like the `only` option of an [Action Controller filter](https://guides.rubyonrails.org/action_controller_overview.html#filters).
-In fact, the gem sets such filter underneath, so you can make use of all its options – they will be passed to that filter.
+It behaves exactly like the `only` (or `except`) option of an [Action Controller filter](https://guides.rubyonrails.org/action_controller_overview.html#filters).
 
 ### Application-wide parameters
 
