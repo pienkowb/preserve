@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe Preserve, type: :request do
-  before(:each) { reset_callbacks(ParametersController) }
+  before(:each) do
+    reset_callbacks(ParametersController)
+    reset_callbacks(Admin::ParametersController)
+  end
 
   it 'persists a parameter value' do
     ParametersController.preserve(:status)
@@ -41,6 +44,18 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:status]).to eq(nil)
   end
 
+  it 'handles nested parameters' do
+    ParametersController.preserve(%i[sort column])
+
+    params = { sort: { column: 'name', direction: 'desc' } }
+
+    get parameters_path, params: params
+    get parameters_path
+
+    expect(json_response[:sort][:column]).to eq('name')
+    expect(json_response[:sort][:direction]).to eq(nil)
+  end
+
   it 'handles a blank parameter value' do
     ParametersController.preserve(:status, allow_blank: true)
 
@@ -50,17 +65,6 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:status]).to eq('')
   end
 
-  it 'handles a session key prefix' do
-    ParametersController.preserve(:status, prefix: 'preserved')
-
-    get parameters_path, params: { status: 'active' }
-    get parameters_path
-
-    expect(json_response[:status]).to eq('active')
-
-    expect(session[:preserved_parameters_status]).to eq('active')
-  end
-
   it 'supports controller inheritance' do
     ApplicationController.preserve(:locale)
 
@@ -68,6 +72,20 @@ RSpec.describe Preserve, type: :request do
     get parameters_path
 
     expect(json_response[:locale]).to eq('en')
+
+    get admin_parameters_path
+
+    expect(json_response[:locale]).to eq('en')
+  end
+
+  it 'prevents collisions in namespaced controllers' do
+    ParametersController.preserve(:status)
+    Admin::ParametersController.preserve(:status)
+
+    get admin_parameters_path, params: { status: 'active' }
+    get parameters_path
+
+    expect(json_response[:status]).to eq(nil)
   end
 
   context 'without a preserve callback' do

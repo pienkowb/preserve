@@ -1,11 +1,14 @@
+require 'preserve/compatibility'
+require 'preserve/session_key'
+
 module Preserve
   class Callback
     delegate :params, to: :controller
     delegate :session, to: :controller
-    delegate :controller_name, to: :controller
 
-    def initialize(parameter_name, options)
-      @parameter_name = parameter_name
+    def initialize(controller_class, parameter_key, options)
+      @controller_class = controller_class
+      @parameter_key = parameter_key
       @options = options
     end
 
@@ -21,29 +24,41 @@ module Preserve
 
     private
 
-    attr_reader :parameter_name
+    attr_reader :controller_class
+    attr_reader :parameter_key
     attr_reader :options
     attr_reader :controller
 
     def parameter_blank?
       predicate = options[:allow_blank] ? :nil? : :blank?
-      params[parameter_name].__send__(predicate)
+      parameter_value.__send__(predicate)
+    end
+
+    def parameter_value
+      keys = Array(parameter_key)
+      keys.reduce(params) { |h, k| h[k] if h.is_a?(HASH_CLASS) }
     end
 
     def parameter_stored?
       session.key?(session_key)
     end
 
+    def session_key
+      SessionKey.new(controller_class, parameter_key).build
+    end
+
     def restore_parameter
-      params[parameter_name] = session[session_key]
+      *keys, last_key = parameter_key
+
+      nested_hash = keys.reduce(params) do |hash, key|
+        hash[key] ||= HASH_CLASS.new
+      end
+
+      nested_hash[last_key] = session[session_key]
     end
 
     def store_parameter
-      session[session_key] = params[parameter_name]
-    end
-
-    def session_key
-      [options[:prefix], controller_name, parameter_name].compact.join('_')
+      session[session_key] = parameter_value
     end
   end
 end

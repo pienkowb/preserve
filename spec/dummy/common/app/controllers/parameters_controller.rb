@@ -6,10 +6,4 @@ class ParametersController < ApplicationController
   def create
     render json: parameters
   end
-
-  private
-
-  def parameters
-    params.except(:controller, :action)
-  end
 end
