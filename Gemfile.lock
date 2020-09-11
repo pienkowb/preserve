@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    preserve (1.0.0)
+    preserve (2.0.0)
       actionpack (>= 3.2)
 
 GEM
