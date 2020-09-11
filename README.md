@@ -49,7 +49,7 @@ end
 ```
 
 Let's start the application and test its behavior using [cURL](https://curl.haxx.se/).
-The whole concept is based on the session, so in order for this to work, the cookie engine must be enabled (hence the `-c` and `-b` options).
+The whole concept is based on the session, so in order for this to work the cookie engine must be enabled (hence the `-c` and `-b` options).
 
 In the first request, the `status` parameter is set to `active`.
 
@@ -83,7 +83,7 @@ class ParametersController < ApplicationController
 end
 ```
 
-Sending the same two requests again gives a different result.
+Sending the same two requests again yields a different result.
 
 ```
 $ curl -c cookies http://localhost:3000/parameters?status=active
@@ -111,7 +111,8 @@ preserve :page, :per_page
 
 ### Action restrictions
 
-Limiting functionality provided by the gem to a certain set of controller actions can be achieved by applying the `only` (or `except`) option. For example:
+Limiting functionality provided by the gem to a certain set of controller actions can be achieved by applying the `only` (or `except`) option.
+For example:
 
 ```ruby
 preserve :status, only: :index
@@ -151,6 +152,18 @@ The `column` parameter can be persisted with the following line:
 ```ruby
 preserve [:sort, :column]
 ```
+
+### Default parameter value
+
+There might be a situation where neither the parameters hash nor the session contains a parameter value.
+To provide a fallback value for such a scenario, you can use the `default` option.
+For instance:
+
+```ruby
+preserve :status, default: 'active'
+```
+
+Note that default values are not stored in the session, but assigned on every request instead.
 
 ### Blank parameter values
 

@@ -44,6 +44,19 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:status]).to eq(nil)
   end
 
+  it 'supports controller inheritance' do
+    ApplicationController.preserve(:locale)
+
+    get parameters_path, params: { locale: 'en' }
+    get parameters_path
+
+    expect(json_response[:locale]).to eq('en')
+
+    get admin_parameters_path
+
+    expect(json_response[:locale]).to eq('en')
+  end
+
   it 'handles nested parameters' do
     ParametersController.preserve(%i[sort column])
 
@@ -56,6 +69,18 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:sort][:direction]).to eq(nil)
   end
 
+  it 'sets a default parameter value' do
+    ParametersController.preserve(:status, default: 'active')
+
+    get parameters_path
+
+    expect(json_response[:status]).to eq('active')
+
+    get parameters_path, params: { status: 'inactive' }
+
+    expect(json_response[:status]).to eq('inactive')
+  end
+
   it 'handles a blank parameter value' do
     ParametersController.preserve(:status, allow_blank: true)
 
@@ -63,19 +88,6 @@ RSpec.describe Preserve, type: :request do
     get parameters_path, params: { status: '' }
 
     expect(json_response[:status]).to eq('')
-  end
-
-  it 'supports controller inheritance' do
-    ApplicationController.preserve(:locale)
-
-    get parameters_path, params: { locale: 'en' }
-    get parameters_path
-
-    expect(json_response[:locale]).to eq('en')
-
-    get admin_parameters_path
-
-    expect(json_response[:locale]).to eq('en')
   end
 
   it 'prevents collisions in namespaced controllers' do
