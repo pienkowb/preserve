@@ -4,6 +4,8 @@ pkg/
 gemfiles/*.gemfile.lock
 coverage/
 
+Gemfile.lock
+
 spec/dummy/rails-3/db/*.sqlite3
 spec/dummy/rails-3/log/*.log
 spec/dummy/rails-3/tmp/
