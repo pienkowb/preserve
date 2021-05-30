@@ -1,10 +1,10 @@
 .bundle/
 log/*.log
 pkg/
-gemfiles/*.gemfile.lock
 coverage/
 
 Gemfile.lock
+gemfiles/*.gemfile.lock
 
 spec/dummy/rails-3/db/*.sqlite3
 spec/dummy/rails-3/log/*.log
