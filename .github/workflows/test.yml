@@ -1,0 +1,67 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 6'
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - '2.7'
+          - '2.6'
+          - '2.5'
+          - '2.4'
+          - '2.3'
+          - '2.2'
+          - '2.1'
+          - '2.0'
+        gemfile:
+          - rails_6
+          - rails_5
+          - rails_4
+          - rails_3
+        exclude:
+          - ruby: '2.7'
+            gemfile: rails_4
+          - ruby: '2.7'
+            gemfile: rails_3
+          - ruby: '2.4'
+            gemfile: rails_6
+          - ruby: '2.3'
+            gemfile: rails_6
+          - ruby: '2.2'
+            gemfile: rails_6
+          - ruby: '2.1'
+            gemfile: rails_6
+          - ruby: '2.1'
+            gemfile: rails_5
+          - ruby: '2.0'
+            gemfile: rails_6
+          - ruby: '2.0'
+            gemfile: rails_5
+
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Run tests
+        run: bundle exec rspec
+
+      - name: Run Rubocop
+        run: bundle exec rubocop
