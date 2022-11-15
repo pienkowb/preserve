@@ -44,6 +44,15 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:status]).to eq(nil)
   end
 
+  it 'applies callback conditional options' do
+    ParametersController.preserve(:status, if: -> { false })
+
+    get parameters_path, params: { status: 'active' }
+    get parameters_path
+
+    expect(json_response[:status]).to eq(nil)
+  end
+
   it 'supports controller inheritance' do
     ApplicationController.preserve(:locale)
 
