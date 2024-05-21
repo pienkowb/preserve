@@ -12,3 +12,13 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+# Development dependencies moved from the gemspec
+gem 'appraisal', '~> 2.2'
+gem 'bundler'
+gem 'rails', '~> 6.0'
+gem 'rspec-rails', '~> 3.9'
+gem 'rubocop', '~> 0.50.0'
+gem 'simplecov', '~> 0.16.1'
+gem 'simplecov-lcov', '~> 0.7.0'
+gem 'sqlite3', '~> 1.3'

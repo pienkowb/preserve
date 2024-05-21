@@ -2,9 +2,15 @@
 
 source "https://rubygems.org"
 
-gem "loofah", "~> 2.20.0"
+gem "appraisal", "~> 2.2"
+gem "bundler"
 gem "rails", "~> 5.2"
-gem "sprockets", "3.7.2"
+gem "rspec-rails", "~> 3.9"
+gem "rubocop", "~> 0.50.0"
+gem "simplecov", "~> 0.16.1"
+gem "simplecov-lcov", "~> 0.7.0"
 gem "sqlite3", "~> 1.4.4"
+gem "loofah", "~> 2.20.0"
+gem "sprockets", "3.7.2"
 
 gemspec path: "../"
