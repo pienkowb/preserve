@@ -24,7 +24,7 @@ dummy_root = File.expand_path("dummy/rails-#{version}", __dir__)
 require "#{dummy_root}/config/environment.rb"
 require 'rspec/rails'
 
-Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
+Dir["#{__dir__}/support/**/*.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.include RequestHelpers, type: :request

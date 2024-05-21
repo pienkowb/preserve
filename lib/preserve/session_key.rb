@@ -13,8 +13,7 @@ module Preserve
 
     private
 
-    attr_reader :controller_class
-    attr_reader :parameter_key
+    attr_reader :controller_class, :parameter_key
 
     def calculate_digest
       Digest::SHA1.hexdigest(input_data)

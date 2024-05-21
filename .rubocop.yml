@@ -3,6 +3,7 @@ AllCops:
   DisplayCopNames: true
   Exclude:
     - vendor/**/*
+    - gemfiles/*.gemfile
     - spec/dummy/rails-?/**/*
 
 Style/Documentation:

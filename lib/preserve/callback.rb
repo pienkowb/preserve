@@ -24,10 +24,7 @@ module Preserve
 
     private
 
-    attr_reader :source_class
-    attr_reader :parameter_key
-    attr_reader :options
-    attr_reader :controller
+    attr_reader :source_class, :parameter_key, :options, :controller
 
     def parameter_blank?
       predicate = options[:allow_blank] ? :nil? : :blank?
