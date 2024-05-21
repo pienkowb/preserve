@@ -63,6 +63,8 @@ jobs:
             gemfile: rails_7
           - ruby: '2.5'
             gemfile: rails_7
+          - ruby: '2.5'
+            gemfile: rails_6
           - ruby: '2.4'
             gemfile: rails_7
           - ruby: '2.4'
