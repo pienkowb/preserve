@@ -1,0 +1,1 @@
+../../../../common/app/controllers/admin/parameters_controller.rb
