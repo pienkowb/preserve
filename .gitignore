@@ -31,3 +31,9 @@ spec/dummy/rails-6/db/*.sqlite3-*
 spec/dummy/rails-6/log/*.log
 spec/dummy/rails-6/storage/
 spec/dummy/rails-6/tmp/
+
+/spec/dummy/rails-7/db/*.sqlite3
+/spec/dummy/rails-7/db/*.sqlite3-*
+/spec/dummy/rails-7/log/*.log
+/spec/dummy/rails-7/storage/
+/spec/dummy/rails-7/tmp/
