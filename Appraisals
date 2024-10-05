@@ -1,5 +1,6 @@
 appraise 'rails-7' do
   gem 'rails', '~> 7.1'
+  gem 'rspec-rails', '~> 6.0.2'
   gem 'rubocop', '~> 1.63'
   gem 'sqlite3', '~> 1.4.4'
 end
