@@ -1,4 +1,5 @@
 appraise 'rails-7' do
+  gem 'irb', '1.3.5'
   gem 'rails', '~> 7.1'
   gem 'rspec-rails', '~> 6.0.2'
   gem 'rubocop', '~> 1.63'
