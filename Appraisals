@@ -1,4 +1,5 @@
 appraise 'rails-7' do
+  gem 'io-console', '0.5.6'
   gem 'irb', '1.3.5'
   gem 'rails', '~> 7.1'
   gem 'reline', '0.1.5'
