@@ -9,6 +9,7 @@ appraise 'rails-7' do
 end
 
 appraise 'rails-6' do
+  gem 'concurrent-ruby', '1.3.4'
   gem 'rails', '~> 6.0'
   gem 'rubocop', '~> 1.50.2'
   gem 'sqlite3', '~> 1.4.4'
