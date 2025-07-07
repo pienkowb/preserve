@@ -78,6 +78,18 @@ RSpec.describe Preserve, type: :request do
     expect(json_response[:sort][:direction]).to eq(nil)
   end
 
+  it 'handles a whole nested parameter' do
+    ParametersController.preserve(:sort)
+
+    params = { sort: { column: 'name', direction: 'desc' } }
+
+    get parameters_path, params: params
+    get parameters_path
+
+    expect(json_response[:sort][:column]).to eq('name')
+    expect(json_response[:sort][:direction]).to eq('desc')
+  end
+
   it 'sets a default parameter value' do
     ParametersController.preserve(:status, default: 'active')
 

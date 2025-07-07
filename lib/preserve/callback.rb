@@ -49,7 +49,9 @@ module Preserve
 
     def parameter_value
       keys = Array(parameter_key)
-      keys.reduce(params) { |h, k| h[k] if h.is_a?(PARAMETERS_CLASS) }
+      value = keys.reduce(params) { |h, k| h[k] if h.is_a?(PARAMETERS_CLASS) }
+      value = parameters_to_hash(value) if value.is_a?(PARAMETERS_CLASS)
+      value
     end
 
     def parameter_value=(value)
@@ -64,6 +66,11 @@ module Preserve
 
     def session_key
       SessionKey.new(source_class, parameter_key).build
+    end
+
+    def parameters_to_hash(params)
+      params = params.to_unsafe_h if params.respond_to?(:to_unsafe_h)
+      params.to_hash
     end
   end
 end
