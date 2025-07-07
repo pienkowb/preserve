@@ -49,14 +49,14 @@ module Preserve
 
     def parameter_value
       keys = Array(parameter_key)
-      keys.reduce(params) { |h, k| h[k] if h.is_a?(HASH_CLASS) }
+      keys.reduce(params) { |h, k| h[k] if h.is_a?(PARAMETERS_CLASS) }
     end
 
     def parameter_value=(value)
       *keys, last_key = parameter_key
 
       nested_hash = keys.reduce(params) do |hash, key|
-        hash[key] ||= HASH_CLASS.new
+        hash[key] ||= PARAMETERS_CLASS.new
       end
 
       nested_hash[last_key] = value

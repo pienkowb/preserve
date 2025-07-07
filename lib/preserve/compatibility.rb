@@ -9,7 +9,7 @@ module Preserve
       :before_filter
     end
 
-  HASH_CLASS =
+  PARAMETERS_CLASS =
     if ActionPack::VERSION::MAJOR >= 4
       ActionController::Parameters
     else
