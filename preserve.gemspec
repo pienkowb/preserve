@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.email = 'pienkowb@gmail.com'
   spec.homepage = 'https://github.com/pienkowb/preserve'
   spec.summary = 'Persist parameter values between requests'
-  spec.description = 'Preserve is a Rails plugin which stores selected ' \
-                     'parameters in the session to make them available ' \
+  spec.description = 'Preserve is a Ruby on Rails plugin that stores ' \
+                     'parameters in session data to make them available ' \
                      'in subsequent requests.'
   spec.license = 'MIT'
   spec.metadata['rubygems_mfa_required'] = 'true'

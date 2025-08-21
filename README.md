@@ -7,7 +7,7 @@
   # [![Gem version](https://img.shields.io/gem/v/preserve)](https://rubygems.org/gems/preserve) [![Build status](https://img.shields.io/github/actions/workflow/status/pienkowb/preserve/test.yml?branch=develop)](https://github.com/pienkowb/preserve/actions/workflows/test.yml?query=branch%3Adevelop) [![Coverage status](https://img.shields.io/coveralls/github/pienkowb/preserve/develop)](https://coveralls.io/github/pienkowb/preserve)
 </div>
 
-Preserve is a Rails plugin which stores selected parameters in the session to make them available in subsequent requests.
+Preserve is a Ruby on Rails plugin that stores parameters in session data to make them available in subsequent requests.
 
 ## Installation
 
