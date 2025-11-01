@@ -1,4 +1,7 @@
 appraise 'rails-7' do
+  # In the generated gemfile, add the following condition:
+  # gem "cgi", RUBY_VERSION > "3" ? "0.2.2" : "0.1.0.2"
+  gem 'cgi', '0.2.2'
   gem 'io-console', '0.5.6'
   gem 'irb', '1.3.5'
   gem 'rails', '~> 7.1'
