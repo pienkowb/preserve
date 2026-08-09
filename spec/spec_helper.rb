@@ -16,6 +16,7 @@ SimpleCov.start do
   end
 end
 
+require 'logger'
 require 'rails'
 
 version = Rails::VERSION::MAJOR
