@@ -8,6 +8,7 @@ appraise 'rails-7' do
   gem 'reline', '0.1.5'
   gem 'rspec-rails', '~> 6.0.2'
   gem 'rubocop', '~> 1.63'
+  gem 'rubocop-ast', '~> 1.42.0'
   gem 'sqlite3', '~> 1.4.4'
 end
 
@@ -15,6 +16,7 @@ appraise 'rails-6' do
   gem 'concurrent-ruby', '1.3.4'
   gem 'rails', '~> 6.0'
   gem 'rubocop', '~> 1.50.2'
+  gem 'rubocop-ast', '~> 1.30.0'
   gem 'rspec-rails', '~> 3.9'
   gem 'sqlite3', '~> 1.4.4'
 end
